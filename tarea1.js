@@ -77,7 +77,7 @@ btv.addEventListener('click',()=>{
     
     let divRes=document.getElementById("resultados");
    
-    divRes.innerHTML="<p> Rectangulo con base " + trin1.base + " y altura " + trin1.altura + "</p>";
+    divRes.innerHTML="<p>Triangulo con base " + trin1.base + " y altura " + trin1.altura + "</p>";
  
     divRes.innerHTML+="<p>con un area de " + trin1.area() + "</p>";
 });
