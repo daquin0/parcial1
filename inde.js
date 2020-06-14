@@ -3,6 +3,7 @@ const bodyparser=require("body-parser");
 const cors=require("cors");
 const app=express(); 
 
+
 class Producto {
     static contador = 0;
     constructor(nombre, color, cantidad, costo) {
@@ -14,9 +15,15 @@ class Producto {
     }
 }
 
+
 class Estructura {
-    constructor(Estructura) {
-      this.Estructura=new Array;
+    constructor(estructura) {
+      this.estructura=new Array;
+      
+      function push(dato){
+          
+        
+      }
     }
 }
 
@@ -44,16 +51,16 @@ app.get("/usuarios/:dato?",cors(),(req,res)=>{
       }
       if(encontrado==-1)
       {
-          res.status(500).send({tipo:"eror",mensaje:"No existe"});
+          res.status(500).send({tipo:"ERROR",mensaje:"No existe"});
       }
       else{
-          res.status(200).send({tipo:"exitoso",mensaje:"ENCONTRADO EN "+ encontrado})
+          res.status(200).send({tipo:"EXITOSO",mensaje:"ENCONTRADO EN "+ encontrado})
       }
     }
     else 
         if(!miInfo)
         {
-            res.status(500).send({tipo:"error",message:"No existen datos"});
+            res.status(500).send({tipo:"ERROR",message:"No existen datos"});
         }
         else 
         {
@@ -63,14 +70,15 @@ app.get("/usuarios/:dato?",cors(),(req,res)=>{
 });
 
 app.post("/usuarios",cors(),(req,res)=>{
-    if(!req.body.usuario|| !req.body.nombre || !req.body.color|| !req.body.cantidad|| !req.body.costo || !req.body.id){
+    //res.status(500).send({nombre:req.body.nombre,color:req.body.color,costo:req.body.costo,cantidad:req.body.cantidad,id:req.body.id});
+    if(!req.body.nombre || !req.body.color|| !req.body.cantidad|| !req.body.costo || !req.body.id){
         res.status(500).send({tipo:"error",mensaje:"faltan datos"});
     }
     else{
         let dato=parseInt(req.body.id);
         let encontrado=-1;
         let i=0;
-        while(i<vec.length && encontrado==-1){
+        while(i<miInfo.length && encontrado==-1){
             if(dato===miInfo.miInfo[i].dato)
             encontrado=i;
             i++;
@@ -82,6 +90,7 @@ app.post("/usuarios",cors(),(req,res)=>{
             res.status(200).send({tipo:"exito",mensaje:"El dato se agrego correctamente"});
         }
         else{
+
             res.status(500).send({tipo:"error",mensaje:"El dato ya existe"});
         }
     }
