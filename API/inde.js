@@ -4,7 +4,7 @@ const cors=require("cors");
 const app=express(); 
 
 
-class Producto {
+/*class Producto {
     static contador = 0;
     constructor(nombre, color, cantidad, costo) {
       this.id = ++Producto.contador;
@@ -13,21 +13,17 @@ class Producto {
       this.cantidad = cantidad;
       this.costo = costo;
     }
-}
+}*/
 
+const vec=require('./producto.json');
 
-class Estructura {
+/*class Estructura {
     constructor(estructura) {
       this.estructura=new Array;
-      
-      function push(dato){
-          
-        
-      }
     }
 }
 
-const miInfo = new Estructura();
+const miInfo = new Estructura();*/
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
@@ -44,8 +40,8 @@ app.get("/usuarios/:dato?",cors(),(req,res)=>{
     {
       let encontrado=-1;
       let i=0;
-      while(i<miInfo.length && encontrado==-1){
-          if(miInfo[i]==parseInt(req.params.dato))
+      while(i<vec.length && encontrado==-1){
+          if(vec[i]==parseInt(req.params.dato))
           encontrado=i;
           i++;
       }
@@ -58,18 +54,19 @@ app.get("/usuarios/:dato?",cors(),(req,res)=>{
       }
     }
     else 
-        if(!miInfo)
+        if(!vec)
         {
             res.status(500).send({tipo:"ERROR",message:"No existen datos"});
         }
         else 
         {
-           res.status(200).send({Mensaje: "Producto: ",datos:miInfo});
+           res.status(200).send({Mensaje: "Producto: ",datos:vec});
 
         }
 });
 
 app.post("/usuarios",cors(),(req,res)=>{
+    console.log(req.body);
     //res.status(500).send({nombre:req.body.nombre,color:req.body.color,costo:req.body.costo,cantidad:req.body.cantidad,id:req.body.id});
     if(!req.body.nombre || !req.body.color|| !req.body.cantidad|| !req.body.costo || !req.body.id){
         res.status(500).send({tipo:"error",mensaje:"faltan datos"});
@@ -78,15 +75,15 @@ app.post("/usuarios",cors(),(req,res)=>{
         let dato=parseInt(req.body.id);
         let encontrado=-1;
         let i=0;
-        while(i<miInfo.length && encontrado==-1){
-            if(dato===miInfo.miInfo[i].dato)
+        while(i<vec.length && encontrado==-1){
+            if(vec[i]==parseInt(dato))
             encontrado=i;
             i++;
         }
         if(encontrado==-1)
         {
-            let dato = new Producto();
-            miInfo.push(dato);
+           // let dato = new Producto();
+            vec.producto.push();
             res.status(200).send({tipo:"exito",mensaje:"El dato se agrego correctamente"});
         }
         else{
@@ -96,7 +93,7 @@ app.post("/usuarios",cors(),(req,res)=>{
     }
 });
 
-app.delete("/usuarios/:delete",cors(),(req,res)=>{
+/*app.delete("/usuarios/:delete",cors(),(req,res)=>{
     if(!req.body.usuario|| !req.body.nombre){
         res.status(500).send({tipo:"error",mensaje:"el dato no existe"});
     }
@@ -118,4 +115,7 @@ app.delete("/usuarios/:delete",cors(),(req,res)=>{
             res.status(500).send({tipo:"error",mensaje:"El dato no se encontro o elimino"});
         }
     }
-});
+});*/
+
+
+
