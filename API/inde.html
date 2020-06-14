@@ -14,16 +14,37 @@
   </head>
   <body>
     <h1>
-         CATALOGO DE Producto
+         CATALOGO DE PRODUCTOS ESCOLARES
     </h1>
 
+        
     <label for="numero">ingresa numero</label>
     <div class="form-group border border-warning">
-    <input type="text" id="numero">
-    <button type="button" id="btnPost">Agregar</button>
+        <div class="form-group"></div>
+        <label for="txtNombre">Nombre: </label>
+    <input type="text" id="txtNombre" placeholder="Ingresa el nombre">
+    <br>
+       <label for="nombre">Cantidad: </label>
+    <input type="text" id="cantidad" placeholder="Ingresa la cantidad">
+    <br>
+       <label for="nombre">Costo: </label>
+    <input type="text" id="costo" placeholder="Ingresa el costo">
+    <br>
+        <label for="nombre">Color: </label>
+    <input type="text" id="costo" placeholder="Ingresa el color">
+    <br>
+         <label for="nombre">ID: </label>
+    <input type="text" id="id"placeholder="Ingresa el ID">
+    <br>
+
+    <form method="POST" acton="/update">
+      <br> 
+    <button type="button" id="btnAgregar">Agregar</button>
     <button type="button" id="btnConsultar">Leer</button>
     <button type="button" id="btnDelete">Eliminar</button>
+    </form>
     <div id="details"></div>
-    <script src="finale/app.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
+
