@@ -1,0 +1,18 @@
+{
+    "prodcuto":[
+        {
+            "id":1,
+            "nombre":"mochila",
+            "costo":100,
+            "cantidad":2,
+            "color": "rojo"
+        },
+        {
+            "id":2,
+            "nombre":"uniforme",
+            "costo":200,
+            "cantidad":5,
+            "color": "blanco"
+        }
+    ]
+}
