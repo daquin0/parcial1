@@ -1,6 +1,19 @@
-import { request } from "http";
+//import { request } from "http";
 const btnAgregar = document.getElementById("btnAgregar").addEventListener("click", (e) => {
-  let numero = parseInt(document.getElementById("numero").value);
+  let nombre = document.getElementById("txtNombre").value;
+  var xhr= new XMLHttpRequest();
+  xhr.open("POST","http://localhost:3005/usuarios/",true);
+  xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+  xhr.onreadystatechange=function(){
+    if(this.readyState === XMLHttpRequest.DONE && this.status === 200){
+    let divDetails = document.getElementById("details");
+    details.innerHTML +=`
+    <div>
+      <p><strong>ID: ${this.response} </p>
+    </div<`;
+    }
+  }
+  xhr.send("usuario=filemon&numero=" + nombre);
 });
 
 const btnLeer = document.getElementById("btnConsultar");
@@ -21,3 +34,5 @@ request.onload = function() {
 request.send()
 
 });
+
+const btnEliminar = document.getElementById("btnConsultar")
