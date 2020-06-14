@@ -19,11 +19,6 @@ class Producto {
 class Estructura {
     constructor(estructura) {
       this.estructura=new Array;
-      
-      function push(dato){
-          
-        
-      }
     }
 }
 
@@ -70,6 +65,7 @@ app.get("/usuarios/:dato?",cors(),(req,res)=>{
 });
 
 app.post("/usuarios",cors(),(req,res)=>{
+    console.log(req.body);
     //res.status(500).send({nombre:req.body.nombre,color:req.body.color,costo:req.body.costo,cantidad:req.body.cantidad,id:req.body.id});
     if(!req.body.nombre || !req.body.color|| !req.body.cantidad|| !req.body.costo || !req.body.id){
         res.status(500).send({tipo:"error",mensaje:"faltan datos"});
