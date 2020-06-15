@@ -3,27 +3,7 @@ const bodyparser=require("body-parser");
 const cors=require("cors");
 const app=express(); 
 
-
-/*class Producto {
-    static contador = 0;
-    constructor(nombre, color, cantidad, costo) {
-      this.id = ++Producto.contador;
-      this.nombre = nombre;
-      this.color= color;
-      this.cantidad = cantidad;
-      this.costo = costo;
-    }
-}*/
-
 const vec=require('./producto.json');
-
-/*class Estructura {
-    constructor(estructura) {
-      this.estructura=new Array;
-    }
-}
-
-const miInfo = new Estructura();*/
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
@@ -66,9 +46,9 @@ app.get("/usuarios/:dato?",cors(),(req,res)=>{
 });
 
 app.post("/usuarios",cors(),(req,res)=>{
-    console.log(req.body);
+    console.log(req.body.nombre);
     //res.status(500).send({nombre:req.body.nombre,color:req.body.color,costo:req.body.costo,cantidad:req.body.cantidad,id:req.body.id});
-    if(!req.body.nombre || !req.body.color|| !req.body.cantidad|| !req.body.costo || !req.body.id){
+    if( !req.body.nombre || !req.body.color|| !req.body.cantidad|| !req.body.costo || !req.body.id){
         res.status(500).send({tipo:"error",mensaje:"faltan datos"});
     }
     else{
@@ -82,8 +62,14 @@ app.post("/usuarios",cors(),(req,res)=>{
         }
         if(encontrado==-1)
         {
-           // let dato = new Producto();
-            vec.producto.push();
+           let prod =  {
+            "id":req.body.id,
+            "nombre": req.body.nombre,
+            "costo":req.body.costo,
+            "cantidad":req.body.cantidad,
+            "color":req.body.cantidad
+        };
+            vec.producto.push(prod);
             res.status(200).send({tipo:"exito",mensaje:"El dato se agrego correctamente"});
         }
         else{
@@ -93,12 +79,75 @@ app.post("/usuarios",cors(),(req,res)=>{
     }
 });
 
-/*app.delete("/usuarios/:delete",cors(),(req,res)=>{
-    if(!req.body.usuario|| !req.body.nombre){
+
+app.put("/usuarios",cors(),(req,res)=>{
+    const {id,nombre,costo,cantidad,color}=req.body;
+    if(!req.body.id){
+        res.status(500).send({tipo:"error",mensaje:"faltan datos"});
+    }
+    else 
+    {
+        id=req.body.id;
+        let encontrado=-1;
+        let i=0;
+        while(i<vec.length && encontrado==-1)
+        {  
+            if(id=vec[i].id){
+                encontrado=i;
+                i++;
+            }
+            if(encontrado===-1)
+            {
+            res.status(500).send({tipo:"error",mensaje:"Los datos no existen "})    
+             }
+             else {
+                vec[encontrado].id=id;
+                vec[encontrado].nombre=nombre;
+                vec[encontrado].costo=costo;
+                vec[encontrado].cantidad=cantidad;
+                vec[encontrado].color=color;  
+             }
+ 
+        }
+            res.json(vec);
+            res.status(200).send({tipo:"exito",mensaje:"Los datos actualizaron correctamente"});
+    } 
+});
+
+
+/*app.delete("/usuarios/:delete/:dato",cors(),(req,res)=>{
+    const{dato}=req.params.dato;
+    if(!req.body.nombre || !req.body.color|| !req.body.cantidad|| !req.body.costo || !req.body.id){
         res.status(500).send({tipo:"error",mensaje:"el dato no existe"});
     }
     else{
-        let dato=parseInt(req.body.nombre);
+        let dato=parseInt(req.body.dato);
+        let encontrado=-1;
+        let i=0;
+        while(i<vec.length && encontrado==-1){
+            if(vec.dato==dato)
+            encontrado=i;
+            i++;
+        }
+        if(encontrado!=-1)
+        {
+            vec.producto.splice(encontrado,1);
+            res.status(200).send({tipo:"exito",mensaje:"El dato se elimino"});
+        }
+        else{
+            res.status(500).send({tipo:"error",mensaje:"El dato no se encontro o elimino"});
+        }
+    }
+});*/
+
+
+app.delete("/:dato",cors(),(req,res)=>{
+    const{dato}=req.params;
+    //if(!req.body.dato){
+       // res.status(500).send({tipo:"error",mensaje:"el dato no existe"});
+    //}
+    //else{
+       // let dato=parseInt(req.body.dato);
         let encontrado=-1;
         let i=0;
         while(i<vec.length && encontrado==-1){
@@ -108,14 +157,33 @@ app.post("/usuarios",cors(),(req,res)=>{
         }
         if(encontrado==-1)
         {
-            vec.splice(encontrado,1);
+            vec.producto.splice(encontrado,1);
+            res.json(vec);
             res.status(200).send({tipo:"exito",mensaje:"El dato se elimino"});
         }
         else{
             res.status(500).send({tipo:"error",mensaje:"El dato no se encontro o elimino"});
         }
-    }
+   // }
+});
+
+/*app.delete("/usuarios/:dato",cors(),(req,res)=>{
+        const{dato}=req.params;
+        let encontrado=-1;
+        let i=0;
+        while(i<vec.length){
+            if(vec.dato==dato)
+            encontrado=i;
+            i++;
+        }
+        if(encontrado!=-1)
+        {
+            vec.producto.splice(encontrado,1);
+            res.status(200).send({tipo:"exito",mensaje:"El dato se elimino"});
+        }
 });*/
+
+
 
 
 
