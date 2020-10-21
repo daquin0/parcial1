@@ -1,0 +1,50 @@
+h2 {
+    color: pink; /* Se pondrá de rosa todo lo que este como h2*/
+}  
+
+p em{
+    color: lightblue;  /* Se pondra de azul el texto que este entre la etiqueta em encontrada en un parrafo*/
+}
+h3 + p {
+    font-size: xx-small;  /* Se pondrá de tamaño pequeño el parrafo que este en seguida del h3*/
+  }
+.caja1{
+    background: palevioletred;
+    width: 400px;
+    margin: 0 auto;
+    padding: 30px;                      /* Se realizarán los cambios que se encuentren dentro del div de la clase caja1*/
+    border: 10px solid salmon;
+    height: 100px;
+    display: inline-block 10px;
+    /*position: absolute;*/
+
+    
+}
+.caja2{
+    background: plum;
+    width: 400px;
+    margin: 0 auto;
+    height: 140px;
+    padding: 30px;
+    border: 10px solid salmon;
+    margin-top: 20px;
+    display: inline-block ;
+    overflow: auto;
+    
+}
+.caja3{
+    background:palevioletred;
+    width: 400px;
+    margin: 0 auto;
+    height: 80px;
+    padding: 30px;
+    border: 10px solid salmon;
+    margin-top: 20px;
+    display: inline-block 10px;
+    /*display: contents;
+    /*display: table;    "El elemento define un cuadro de nivel de bloque. */
+    /*float: left;       "El elemento  se utiliza para posicionar y formatear contenido */
+    /*display: block;    "El elemento genera un cuadro de elemento de bloque." */
+    /*display: inline;   "El elemento genera uno o más cuadros de elemento en línea." */
+    /*display: none;     "Se utiliza para ocultar y mostrar elementos sin eliminarlos ni volver a crearlos. */
+}
