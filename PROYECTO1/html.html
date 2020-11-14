@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>COBRANZA</title>
+    <link rel="stylesheet" href="Estilos/style.css">
+    <script src="app.js"></script>	
+  
+</head>
+<body onload="usuarios();">
+	<header>
+		<div>
+			<h2 title="main cabecera otro">PROPIETARIO Y DEUDOR</h2>
+    </header>
+    <form id="frm1">
+    <p>Propietario</p>
+    <p>Introducir Datos del usuario</p>
+    
+    <div class="caja">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    <th>Contraseña</th>
+
+                </tr>
+            </thead>
+            <tbody id="usuarios">
+
+            </tbody>
+        </table>
+        <label for="Nombre">Nombre Completo</label><br>
+        <input type="text" id="Nombre" value="0"><br><br>
+        <label for="Datos">Teléfono</label><br>
+        <input type="Number" id="Telefono" value="0"><br><br>
+        <label for="Datos">Correo</label><br>
+        <input type="text" id="Correo" value="0"><br><br>
+        <label for="Datos">Contraseña</label><br>
+        <input type="text" id="Password" value="0"><br><br>
+        <button type="button"id="Guardar1">Guardar</button><br><br>
+    </div>
+    <div class="caja2">
+       <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Deuda</th>
+                </tr>
+            </thead>
+            <tbody id="usuarios2">
+            </tbody>
+       </table>
+        <label for="Datos">Ingresar Cantidad a cobrar</label><br>
+        <input type="Number" id="Cobro" value="0"><br><br>
+        <label for="Datos">Ingresar nombre de usuario al que se le aplicará el cargo</label><br>
+        <input type="text" id="Nombre" value="0"><br><br>
+        <button type="button"id="Guardar3">Aplicar a Todos</button><br><br>
+        <button type="button"id="Guardar2">Guardar</button><br><br><br>
+    </div>
+    <div class="caja3">
+        <table>
+            <thead>
+            <tr>
+                <th> Nombre</th>
+                <th> Deuda</th>
+            </tr>
+        </thead>
+        <tbody id="usuario3">
+        </tbody>
+        </table>
+        <label for="Datos">Ingresar Cantidad a pagar</label><br>
+        <input type="Number" id="Pago" value="0"><br><br>
+        <label for="Datos">Ingresar nombre de usuario </label><br>
+        <input type="text" id="Nombre" value="0"><br><br>
+        <button type="button"id="Guardar4">Guardar</button><br><br><br>
+    </div>
+    <div class="caja4">
+        <label for="Datos">Ingresar nombre de usuario </label><br>
+        <input type="text" id="Nombre" value="0"><br><br>
+        <label for="Datos">Ingresar fecha </label><br>
+        <input type="text" id="fecha" value="0"><br><br>
+        <button type="button"id="Consultar">Consultar</button><br><br><br>
+        <button type="button"id="Monto">Consultar Monto</button><br><br><br>
+    </div>
+    
+    <p>DEUDOR</p>
+
+    <div class="caja5">
+        <label for="Datos">Teléfono</label><br>
+        <input type="Number" id="Teléfono" value="0"><br><br>
+        <label for="Datos">Contraseña</label><br>
+        <input type="text" id="Contraseña" value="0"><br><br>
+        <button type="Number" id="Pagos">Ver Registro de Pagos</button>
+        <button type="Number" id="Cobros">Ver Cobros Generados</button>
+        <button type="Number"id="Deudad">Ver Deudas</button>    
+    </div>
+
+</form>
+<script src="appp.js"></script>
+</div>
+</body>
+</html>
